@@ -1,2 +1,2 @@
 # UnityVR-Project
- UnityVR 게임 개발
+ Unity VR 게임 개발
