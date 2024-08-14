@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class Mob : MonoBehaviour
@@ -18,56 +15,56 @@ public class Mob : MonoBehaviour
 
     // public float arrangeRange = 0.5f;
 
-    public float emissionIntensity = 5f;
+    // public float emissionIntensity = 5f;
 
     public float destroyDelay = 1f;
     private bool isDestroyed = false;
 
-    public ParticleSystem environmentParticle;
-    public MeshRenderer holeMeshRenderer;
+    // public ParticleSystem environmentParticle;
+    // public MeshRenderer holeMeshRenderer;
 
-    public ParticleSystem destroyParticle;
-    public AudioSource destroyAudio;
-    public GameObject modelGameObject;
+    // public ParticleSystem destroyParticle;
+    // public AudioSource destroyAudio;
+    // public GameObject modelGameObject;
 
-    private NavMeshAgent agent;
+    // private NavMeshAgent agent;
 
-    private void Awake()
-    {
-        agent = GetComponent<NavMeshAgent>();
-    }
+    // private void Awake()
+    // {
+    //     agent = GetComponent<NavMeshAgent>();
+    // }
 
     private void Start()
     {
-        agent.SetDestination(new Vector3(0f, 2f, 1f));
-        agent.speed *= Random.Range(0.8f, 1.5f);
+        // agent.SetDestination(new Vector3(0f, 2f, 1f));
+        // agent.speed *= Random.Range(0.8f, 1.5f);
 
-        RandomColor();
+        // RandomColor();
 
         Invoke(nameof(Destroy), 3f);
 
         OnCreated?.Invoke();
     }
 
-    private void RandomColor()
-    {
-        var color = Random.ColorHSV(hueMin, hueMax, saturationMin, saturationMax, valueMin, valueMax);
+    // private void RandomColor()
+    // {
+    //     var color = Random.ColorHSV(hueMin, hueMax, saturationMin, saturationMax, valueMin, valueMax);
 
-        var main = environmentParticle.main;
-        main.startColor = new ParticleSystem.MinMaxGradient(color, color * Random.Range(1f - arrangeRange, 1f + arrangeRange));
+    //     var main = environmentParticle.main;
+    //     main.startColor = new ParticleSystem.MinMaxGradient(color, color * Random.Range(1f - arrangeRange, 1f + arrangeRange));
 
-        var renderer = environmentParticle.GetComponent<ParticleSystemRenderer>();
-        renderer.material.SetColor("_EmissionColor", color * emissionIntensity);
+    //     var renderer = environmentParticle.GetComponent<ParticleSystemRenderer>();
+    //     renderer.material.SetColor("_EmissionColor", color * emissionIntensity);
 
-        holeMeshRenderer.material.SetColor("_EmissionColor", color * emissionIntensity);
+    //     holeMeshRenderer.material.SetColor("_EmissionColor", color * emissionIntensity);
 
 
-        main = destroyParticle.main;
-        main.startColor = new ParticleSystem.MinMaxGradient(color, color * Random.Range(1f - arrangeRange, 1f + arrangeRange));
+    //     main = destroyParticle.main;
+    //     main.startColor = new ParticleSystem.MinMaxGradient(color, color * Random.Range(1f - arrangeRange, 1f + arrangeRange));
 
-        renderer = destroyParticle.GetComponent<ParticleSystemRenderer>();
-        renderer.material.SetColor("_EmissionColor", color * emissionIntensity);
-    }
+    //     renderer = destroyParticle.GetComponent<ParticleSystemRenderer>();
+    //     renderer.material.SetColor("_EmissionColor", color * emissionIntensity);
+    // }
 
     public void Destroy()
     {
@@ -78,9 +75,9 @@ public class Mob : MonoBehaviour
         // destroyParticle.Play();
         // destroyAudio.Play();
 
-        environmentParticle.Stop();
-        agent.enabled = false;
-        modelGameObject.SetActive(false);
+        // environmentParticle.Stop();
+        // agent.enabled = false;
+        // modelGameObject.SetActive(false);
 
         Destroy(gameObject, destroyDelay);
 
