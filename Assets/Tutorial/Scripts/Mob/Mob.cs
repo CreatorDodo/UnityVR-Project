@@ -41,7 +41,7 @@ public class Mob : MonoBehaviour
 
         // RandomColor();
 
-        Invoke(nameof(Destroy), 3f);
+        // Invoke(nameof(Destroy), 3f);
 
         OnCreated?.Invoke();
     }

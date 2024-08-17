@@ -13,7 +13,7 @@ public class FlashLineRenderer : MonoBehaviour
         target = GetComponent<LineRenderer>();
     }
 
-    private void Call()
+    public void Call()
     {
         StopAllCoroutines();
         StartCoroutine(Process());

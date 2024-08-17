@@ -48,6 +48,10 @@ public class Shooter : MonoBehaviour
         if (Physics.Raycast(shootPoint.position, shootPoint.forward, out RaycastHit hitInfo, maxDistance, hittableMask))
         {
             Instantiate(hitEffectPrefab, hitInfo.point, Quaternion.identity);
+            
+            var hitObject = hitInfo.transform.GetComponent<Hittable>();
+            hitObject?.Hit();
+
             OnShootSuccess?.Invoke(hitInfo.point);
         }
         else

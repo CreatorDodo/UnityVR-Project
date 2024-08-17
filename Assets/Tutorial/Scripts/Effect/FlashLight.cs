@@ -13,7 +13,7 @@ public class FlashLight : MonoBehaviour
         target = GetComponent<Light>();
     }
 
-    private void Call()
+    public void Call()
     {
         StopAllCoroutines();
         StartCoroutine(Process());

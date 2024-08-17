@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 808267433826455325}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,9 @@ GameObject:
   - component: {fileID: 7903918323587936674}
   - component: {fileID: 4851741023445526575}
   - component: {fileID: 1751542997535941525}
-  m_Layer: 0
+  - component: {fileID: 1802544637876045610}
+  - component: {fileID: 1289034220048254701}
+  m_Layer: 22
   m_Name: Jack o lantern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,6 +211,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1289034220048254701}
+        m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   destroyDelay: 1
 --- !u!114 &7903918323587936674
 MonoBehaviour:
@@ -294,6 +308,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 0.8
   max: 1.5
+--- !u!114 &1802544637876045610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706097124705925577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc799ef707a81eb4882951231fec6d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 280565991567146803}
+        m_TargetAssemblyTypeName: Mob, Assembly-CSharp
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!135 &1289034220048254701
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706097124705925577}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.283
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!1001 &343802082045380913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -305,6 +359,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Destroy Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 571224680098084330, guid: 1206a164d4a675548b1f592525ba8ab2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337252197999077367, guid: 1206a164d4a675548b1f592525ba8ab2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 9150662194520853943, guid: 1206a164d4a675548b1f592525ba8ab2,
         type: 3}
@@ -495,6 +559,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Environment Effect
       objectReference: {fileID: 0}
+    - target: {fileID: 3691523477543337826, guid: 533ce7e29ebc4934a84823f93faa6dd5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 533ce7e29ebc4934a84823f93faa6dd5, type: 3}
 --- !u!4 &1425703681999868720 stripped
@@ -509,19 +578,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2374506387879078993}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3650611391259952567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425703681999868723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa39ab08f6b5d9e41abd6dbc168bd962, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrangeRange: 0.5
 --- !u!114 &709828191159234269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,6 +591,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensity: 5
+--- !u!114 &3650611391259952567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425703681999868723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa39ab08f6b5d9e41abd6dbc168bd962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrangeRange: 0.5
 --- !u!198 &1425703681999868750 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3691523477543337759, guid: 533ce7e29ebc4934a84823f93faa6dd5,
@@ -607,6 +676,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Jack o lantern (Hole)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e444b9fa9f5125c4eaaf07df4b8f55b8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: e444b9fa9f5125c4eaaf07df4b8f55b8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e444b9fa9f5125c4eaaf07df4b8f55b8, type: 3}
@@ -702,6 +781,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jack o lantern (Body)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd58f1a880fccd3439f4ab7b13069708,
+        type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: bd58f1a880fccd3439f4ab7b13069708,
+        type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd58f1a880fccd3439f4ab7b13069708, type: 3}
 --- !u!4 &6830291289792111964 stripped
@@ -776,6 +865,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Jack o lantern (Tab)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e87307ce9b50f7b4ab58cca001fdc5bf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: e87307ce9b50f7b4ab58cca001fdc5bf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e87307ce9b50f7b4ab58cca001fdc5bf, type: 3}
