@@ -15,6 +15,13 @@ public class Shooter : MonoBehaviour
     public UnityEvent<Vector3> OnShootSuccess;
     public UnityEvent OnShootFail;
 
+    private Magazine magazine;
+
+    private void Awake()
+    {
+        magazine = GetComponent<Magazine>();
+    }
+
     private void Start()
     {
         Stop();
@@ -37,8 +44,15 @@ public class Shooter : MonoBehaviour
 
         while (true)
         {
-            Shoot();
-
+            if (magazine.Use())
+            {
+                Shoot();
+            }
+            else
+            {
+                OnShootFail?.Invoke();
+            }
+            
             yield return wfs;
         }
     }

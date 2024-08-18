@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Magazine : MonoBehaviour
+public class Magazine : MonoBehaviour, IReloadable
 {
     public int maxBullets = 30;
-    public int chargingTime = 3f;
+    public float chargingTime = 3f;
 
     private int currentBullets;
-    private int currentBullets
+    private int CurrentBullets
     {
         get => currentBullets;
         set
@@ -31,4 +31,61 @@ public class Magazine : MonoBehaviour
 
     public UnityEvent<int> OnBulletsChanged;
     public UnityEvent<float> OnChargeChanged;
+
+    private void Start()
+    {
+        CurrentBullets = maxBullets;
+    }
+
+    public bool Use(int amount = 1)
+    {
+        if (CurrentBullets >= amount)
+        {
+            CurrentBullets -= amount;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    [ContextMenu("Reload")]
+    public void StartReload()
+    {
+        if (currentBullets == maxBullets)
+            return;
+
+        StopAllCoroutines();
+        StartCoroutine(ReloadProcess());
+    }
+
+    public void StopReload()
+    {
+        StopAllCoroutines();
+    }
+
+    private IEnumerator ReloadProcess()
+    {
+        OnReloadStart?.Invoke();
+
+        var beginTime = Time.time;
+        var beginBullets = currentBullets;
+        var enoughPercent = 1f - ((float)currentBullets / maxBullets);
+        var enoughChargingTime = chargingTime * enoughPercent;
+
+        while (true)
+        {
+            var t = (Time.time - beginTime) / enoughChargingTime;
+            if (t >= 1f)
+               break;
+
+            CurrentBullets = (int)Mathf.Lerp(beginBullets, maxBullets, t);
+            yield return null;            
+        }
+
+        CurrentBullets = maxBullets;
+
+        OnReloadEnd?.Invoke();
+    }
 }
