@@ -19,4 +19,8 @@ public class SurvivalTimeUI : MonoBehaviour
         startTime = Time.time;
     }
 
+    private void Update()
+    {
+        textUI.text = $"Survival Time\n{Time.time - startTime:0.0}s";
+    }
 }

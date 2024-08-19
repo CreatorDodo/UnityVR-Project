@@ -44,6 +44,7 @@ public class Mob : MonoBehaviour
         // Invoke(nameof(Destroy), 3f);
 
         OnCreated?.Invoke();
+        MobManager.Instance.OnSpawned(this);
     }
 
     // private void RandomColor()
@@ -82,5 +83,6 @@ public class Mob : MonoBehaviour
         Destroy(gameObject, destroyDelay);
 
         OnDestroyed?.Invoke();
+        MobManager.Instance.OnDestroyed(this);
     }
 }
